@@ -13,6 +13,7 @@
     "bcryptjs": "^2.4.3",
     "dotenv": "^9.0.2",
     "express": "^4.17.1",
+    "express-session": "^1.17.2",
     "massive": "^6.9.0"
   }
 }
