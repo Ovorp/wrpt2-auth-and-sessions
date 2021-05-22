@@ -88,12 +88,16 @@ app.post(`/api/login`, (req, res) => {
 
 const mySecretData = ['Ths is the secret data'];
 
-app.get(`/api/secret`, (req, res) => {
+const checkIfLoggedIn = (req, res, next) => {
   if (req.session.loggedIn) {
-    res.status(200).json(mySecretData);
+    next();
   } else {
-    res.status(418).json('go log in');
+    res.status(418).json('Go log in');
   }
+};
+
+app.get(`/api/secret`, checkIfLoggedIn, (req, res) => {
+  res.status(200).json(mySecretData);
 });
 
 app.post(`/api/secret`, (req, res) => {
